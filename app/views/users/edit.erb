@@ -1,0 +1,24 @@
+<div class="user_prof_edit">
+	<h3>Profiel Edit</h3>
+	<div class="flash_contener">
+		<%= render "layouts/flash", object:@user%>
+	</div>
+	<%= form_for(@user) do |f| %>
+	<div class="prof_edit-image">
+  	<h3>prof image</h3>
+  	  <%= f.attachment_field :profile_image, placeholder: "prof image", class: "prof_edit_image" %>
+    </div>
+	<div class="prof_edit-name">
+		<h3>name</h3>
+	    <%= f.text_field :name, autofocus: true, placeholder: "name"  %>
+	</div>
+	  <div class="prof_edit-coment">
+	  	<h3>introduction</h3>
+	    <%= f.text_area :introduction, placeholder: "introduction", class: "prof_edit_space" %>
+	  </div>
+	  
+	  <div>
+	  	<%= f.submit"submit", class: "btn_1 prof_edit_submit btn btn-success" %>
+	  </div>
+	<% end %>
+</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Port1</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/891cb8f3a7.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  </head>
+
+  <body>
+    <header id="header" class="clearfix">
+      <div class="log">
+        <h3>Portforio</h3>
+      </div>
+      <div class="lists">
+        <% if user_signed_in? %>
+          <nav>
+          <ul>
+            <li><%=link_to "Home", user_path(current_user.id) %></li>
+            <li><%=link_to "New", new_post_path %></li>
+            <li><%=link_to "Posts", posts_path %></li>
+            <li><%=link_to "Users", users_path %></li>
+            <li><%=link_to "Log out", destroy_user_session_path, method: :delete, data: {confirm: "Log outしますか？"} %></li>
+          </ul>
+        </nav>
+        <% else %>
+        <nav>
+          <ul>
+            <li><%=link_to "Home", root_path %></li>
+            <li><%=link_to "Sign up", new_user_registration_path %></li>
+            <li><%=link_to "Log in", new_user_session_path %></li>
+          </ul>
+        </nav>
+        <% end %>
+      </div>
+    </header><!-- /header -->
+    <div class="inner">
+      <%= yield %>
+    </div>
+  </body>
+</html>

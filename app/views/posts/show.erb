@@ -1,0 +1,81 @@
+<% if flash[:notice] %>
+	<div class="success_message">
+		<p><%=flash[:notice] %></p>
+	</div>
+	<% elsif flash[:alert]%>
+	<div class="error_message">
+		<p><%=flash[:arlrt] %></p>
+	</div>
+<% end %>
+<%= render "layouts/prof", user:@user %>
+<div class="post_show">
+	<!-- このuserの詳細画面に推移 -->
+	<div class="post_show_image_space">
+		<%= attachment_image_tag @post, :image, class: "post_show_image" %>
+	</div>
+	<div class="post_show_text_area">
+		<h3>Title</h3>
+		<p><%= @post.title %></p>
+		<h3>Body</h3>
+		<p><%= @post.body %></p>
+	</div>
+    <div class="post_show_text_area">
+	    <h3>Favorites</h3>
+		<!-- favorites -->
+		<p>
+		<% if @post.favorited_by?(current_user) %>
+    		<%= link_to  post_favorites_path(@post), method: :delete do%>
+    		  <i class="fas fa-heart" style="color:red;"></i>
+    		<% end %>
+    	<% else %>
+    		<%= link_to  post_favorites_path(@post),method: :post do%>
+    		  <i class="far fa-heart"></i>
+    		<% end %>
+    	<% end %>　<%=@post.favorites.count%>　favorites</p>
+		<h3>Comments</h3>
+		<%= render "layouts/flash", object:@post_comment_new%>
+		<h4>Post a comment</h4>
+		<%= form_for [@post,@post_comment_new] do |f|%>
+			<%=f.text_area :comment , placeholder: "comment"%>
+			<%=f.submit "submit"%>
+		<% end %>
+		<!-- クリックされたらこの表示が消えてコメントが全部表示される -->
+		<a class="posted_comments comment_close open">See all <%=@post.post_comments.count%> comments</a>
+		<div class="posted_comments comment_open">
+			<a>Fade out comments</a>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Commented user</th>
+						<th>Comment</th>
+						<th colspan="1"></th>
+					</tr>
+				</thead>
+			　　<%@comments.reverse. each do |comment|%>
+				<tbody>
+					<tr>
+						<td>
+							<%= link_to user_path(comment.user_id) do %>
+						      <%= attachment_image_tag comment.user, :profile_image, size: "60x60", fallback: "no_image.jpg" , class: "img-circle" %>
+						      <%=comment.user.name %>
+					        <% end %>
+					    </td>
+						<td><%=comment.comment%></td>
+						<td>
+							<% if comment.user_id == current_user.id %>
+								<%= link_to "comment detlate", post_post_comment_path(@post,comment), method: :delete, data: {confirm: "削除しますか？"},class: "btn btn-danger"  %>
+							<% end %>
+						</td>
+					</tr>
+				</tbody>
+			　　<% end %>
+			</table>
+		</div>
+	</div>
+	<div class="post_show_path">
+		<% if @user == current_user %>
+			<%= link_to "post edit",edit_post_path(@post.id),class: "btn btn-success " %>
+		    <%= link_to "post detlate",post_path(@post.id), method: :delete, data: {confirm: "削除しますか？"},class: "btn btn-danger"  %>
+		<% end %>
+	</div>
+</div>

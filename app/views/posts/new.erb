@@ -1,0 +1,22 @@
+<%= render "layouts/prof", user:@user %>
+<div class="new">
+	<h3>New Post</h3>
+	<div class="flash_contener">
+		<%= render "layouts/flash", object:@post%>
+	</div>
+	<%= form_for (@post) do |f| %>
+	<div class="new_post_pic">
+		<h4>picture</h4>
+	    <%= f.attachment_field :image, class: "new_image" %>
+	</div>
+	<div class="new_post_title">
+		<h4>title</h4>
+	    <%= f.text_field :title, placeholder:"title",class: "post_space"%>
+	</div>
+	<div class="new_post_comment">
+		<h4>body</h4>
+	    <%= f.text_area :body, placeholder:"body",class: "post_space"%>
+	</div>
+	  <%= f.submit "submit" ,class: "new_submit btn_1 btn btn-success"%>
+	<% end %>
+</div>

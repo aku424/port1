@@ -1,0 +1,28 @@
+<div class="prof">
+  <div class="profimage">
+    <%= link_to user_path(user.id) do %>
+      <%= attachment_image_tag user, :profile_image, size:"200x200", format: "jpeg", fallback: "no_image.jpg",  class: "img-circle"  %>
+    <% end %>
+   </div>
+   <div class="prof_text">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>: <%= user.name%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>introduction</th>
+            <th>: <%= user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="prof_edit">
+      <% if  @user == current_user%>
+         <%= link_to "Prof Edit", edit_user_path(user.id), class: " btn btn-info  " %>
+      <% end %>
+    </div>
+</div>

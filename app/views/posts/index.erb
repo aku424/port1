@@ -1,0 +1,7 @@
+<% if flash[:notice] %>
+	<div class="success_message">
+		<p><%=flash[:notice] %></p>
+	</div>
+<% end %>
+<%= render "layouts/prof", user:@user %>
+<%= render "layouts/index", posts:@posts %>

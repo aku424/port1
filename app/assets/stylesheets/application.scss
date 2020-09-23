@@ -1,0 +1,147 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap-sprockets";  /*ここを追加*/
+@import "bootstrap";            /*ここを追加*/
+*{
+	padding:0;
+	margin: 0;
+	box-sizing: border-box;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.clearfix::after{
+	content: "";
+	display: block;
+	clear: both
+}
+header{
+	padding: 0 200px;
+	background:#000;
+	width: 100%;
+	display: flex;
+	height: 100px;
+	position: relative;
+	position: fixed;
+	z-index: 10px;
+	top: 0;
+}
+header h3{
+	color: #fff;
+	height: 100px;
+	font-size: 32px;
+	line-height: 100px;
+	margin:0;
+}
+header .lists{
+	position: absolute;
+	right: 200px;
+}
+header ul{
+	display: flex;
+}
+header li{
+	line-height: 100px;
+	margin-left: 30px;
+}
+header a{
+	color: #fff;
+	font-size: 18px;
+}
+.inner{
+	margin-top: 100px;
+}
+.prof{
+	border-bottom: 1px #000 solid;
+	display: flex;
+	width: 70%;
+	margin:0 auto;
+	padding:30px 0;
+}
+.prof_text{
+	padding-top: 50px;
+	padding-left:100px;
+	font-size: 18px;
+}
+.prof_edit{
+	width: 300px;
+	text-align: center;
+	a{
+		line-height: 36px;
+		width: 175px;
+		margin-top: 60px;
+	}
+}
+.prof_image{
+	border-radius: 50%;
+}
+.flash_contener{
+	width: 100%;
+	text-align: center;
+}
+.flash{
+	margin:0 auto;
+	display: inline-block;
+	padding:30px;
+	border:5px red solid;
+}
+.btn_1{
+	width: 150px;
+	padding:15px;
+}
+.sign{
+	padding-top:50px;
+	width: 40%;
+	margin:0 auto;
+}
+.sign_input{
+	width: 100%;
+	margin-bottom: 20px;
+}
+.sign_flash{
+	text-align: center;
+	color: green;
+	font-size: 20px;
+}
+.success_message{
+	width: 100%;
+	height: 30px;
+	background-color:#56C500;
+	p{
+		line-height: 30px;
+		text-align: center;
+	    color:#fff;
+	}
+}
+.error_message{
+	width: 100%;
+	height: 30px;
+	background-color:red;
+	p{
+		line-height: 30px;
+		text-align: center;
+	    color:#fff;
+	}
+}
+.posted_comments{
+	display:none;
+}
+.open{
+	display: block;
+}

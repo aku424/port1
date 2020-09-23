@@ -1,0 +1,25 @@
+// Place all the styles related to the Homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.homes_top{
+	width: 50%;
+	margin:0 auto;
+	padding-top:60px;
+}
+.top_path{
+
+	a{
+		margin-top: 30px;
+		width: 100%;
+		padding:15px;
+		font-size: 20px;
+	}
+}
+.actions{
+	width: 100%;
+	text-align: center;
+}
+.sign_btn{
+	width: 200px;
+	padding:10px 0;
+}

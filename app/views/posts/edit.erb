@@ -1,0 +1,29 @@
+<%= render "layouts/prof", user:@user %>
+<div class="post_edit">
+	<h3>Post Edit</h3>
+	<div class="flash_contener">
+		<%= render "layouts/flash", object:@post%>
+	</div>
+	<div class="post_edit_area">
+		<%=form_for(@post) do |f|%>
+			<div>
+				<%= attachment_image_tag @post,:image, size: "800x600",class: "post_edit_image" %>
+			</div>
+			<div class="post_edit_title">
+				<h3>title</h3>
+		        <%= f.text_field :title ,autofocus: true, placeholder: "Title", class: "post_space" %>
+			</div>
+			<div class="post_edit_comment">
+				<h3>body</h3>
+		        <%= f.text_area :body, placeholder: "Body", class: "post_space" %>
+			</div>
+			<div class="post_edit_image_serect">
+				<h3>picture</h3>
+		        <%= f.attachment_field :image %>
+			</div>
+			<div>
+				<%= f.submit "sbnmit", class: "btn_1 btn btn-success"%>
+			</div>
+		<% end %>
+	</div>
+</div>

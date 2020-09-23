@@ -1,0 +1,8 @@
+<% if object.errors.any? %>
+    <div class="flash">
+	    <p><%=object.errors.count%>件のエラーが発生しました。</p>
+		<% object.errors.full_messages.each do |message|%>
+		  <p><%=message%></p>
+		<% end %>
+    </div>
+<% end %>
